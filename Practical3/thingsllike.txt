@@ -1,9 +1,0 @@
-I like tiger
-I like lion
-I like rose
-I like pig
-I like orange
-I like cat
-I like banana
-I like panda
-I don't like apple
