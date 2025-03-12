@@ -5,9 +5,10 @@
 w = float(input(" Your weight: ")) # get weight
 h = float(input(" Your height: ")) # get height
 BMI = w / h**2 # caculate
+print ("Your BMI is:" + str(BMI)) # print BMI
 if BMI < 18.5: # judge
     print("underweight") # light situation
 elif 18.5 <= BMI <= 30:
-    print("healthy") # healthy situation
+    print("normal weight") # healthy situation
 else:
     print("obese") #  fat situation

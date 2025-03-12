@@ -9,9 +9,11 @@ if c > f: # compare the totle times
     print ("car is faster")
 else:
     print ("bus is faster")
+# result: bus is quicker
 
 # 4.2 Booleans
 X = True
 Y = False
 W = X and Y 
-print (W) # False
+print (W) 
+# False
