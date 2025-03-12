@@ -6,10 +6,8 @@ w = float(input(" Your weight: ")) # get weight
 h = float(input(" Your height: ")) # get height
 BMI = w / h**2 # caculate
 if BMI < 18.5: # judge
-    print(" too light") # too light situation
-elif 18.5 <= BMI < 24:
+    print("underweight") # light situation
+elif 18.5 <= BMI <= 30:
     print("healthy") # healthy situation
-elif 24 <= BMI < 28:
-    print("fat") # fat situation
 else:
-    print("too fat") # too fat situation
+    print("obese") #  fat situation
