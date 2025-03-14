@@ -1,9 +1,9 @@
 # What does this piece of code do?
-# Answer: Check out how many times does the python use to let two random ints from 1 to 5 be equal.
+# Answer: Check out how many times does the python use to let two random ints from 1 to 6 be equal.
 
 # Import libraries
 # randint allows drawing a random number,
-# e.g. randint(1,5) draws a number between 1 and 6
+# e.g. randint(1,5) draws a number between 1 and 5
 from random import randint
 
 # ceil takes the ceiling of a number, i.e. the next higher integer.
