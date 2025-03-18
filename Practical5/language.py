@@ -19,7 +19,7 @@ Percentage_of_Developers = (62.3, 53.9, 51, 51, 38.5)
 ind = np.arange(N)
 width = 0.35
 p1 = plt.bar(ind, Percentage_of_Developers, width)
-plt.xticks(ind, ("JavaScript","c","Python","SQL","TypeScript"))
+plt.xticks(ind, ("JavaScript","HTML","Python","SQL","TypeScript"))
 plt.yticks(np.arange(0,70,5))
 plt.ylabel("Percentage_of_Developers")
 plt.title("Programming Language Popularity (2024)")
