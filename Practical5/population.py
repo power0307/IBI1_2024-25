@@ -27,7 +27,7 @@ print("Sorted China Population:", sorted_china)
 fig, axes = plt.subplots(1, 2, figsize=(12,6))
 
 # UK population pie chart
-axes[0].pie(uk_countries.values(), labels=uk_countries.keys(), autopct='%1.1f%%', colors=['blue', 'green', 'red', 'purple'])
+axes[0].pie(uk_countries.values(), labels=uk_countries.keys(), autopct='%1.1f%%', colors=['pink', 'green', 'red', 'purple'])
 axes[0].set_title("Population Distribution in UK (2022)")
 
 # China provinces population pie chart
