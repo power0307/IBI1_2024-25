@@ -1,31 +1,34 @@
 import re
 
-# Get the user input for the splice donor/acceptor combination
-splice_combination = input("Please enter one of the splice donor/acceptor combinations (GTAG, GCAG, ATAC): ")
-while splice_combination not in ["GTAG", "GCAG", "ATAC"]:
-    splice_combination = input("Invalid input. Please enter one of the splice donor/acceptor combinations (GTAG, GCAG, ATAC): ")
+file_path = r"C:\Users\F\Desktop\IBI1\IBI1_2024-25\Practical7\Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"
+#give the pattern
+tata_patterns = ["GTAG", "GCAG", "ATAC"]
+a = input("chose GTAG or GCAG or ATAC: ")
 
-# Construct the output file name
-output_filename = f"{splice_combination}_spliced_genes.fa"
-
-# Assume gene sequences are read from a file here. For now, simulate the data structure.
-# In a real - world application, sequences should be read from an actual fasta file, like the one processed previously.
-genes = {
-    "gene1": "ATGCTATATATGCTAGCTGTAG",
-    "gene2": "ATGCTAGCTAGCTGCAG",
-    "gene3": "ATGCTATATAAGCTAGCTATAC"
-}
-
-# Compile the regular expression pattern for the TATA box
-tata_pattern = re.compile(r"TAT(A{2,6})T")
-
-with open(output_filename, "w") as out_file:
-    for gene_name, gene_sequence in genes.items():
-        # Check if the gene sequence contains the splice combination
-        if splice_combination in gene_sequence:
-            # Count the number of TATA boxes in the gene sequence
-            tata_count = len(tata_pattern.findall(gene_sequence))
-            if tata_count > 0:
-                # Remove newline characters from the sequence and write it to the file
-                one_line_sequence = gene_sequence.replace("\n", "")
-                out_file.write(f">{gene_name}_{tata_count}\n{one_line_sequence}\n")
+with open(file_path, "r") as file, open(f"{a}_spliced_genes.fa","w") as newfile: #open the file and read them
+    current_header = ""
+    current_sequence = []
+    
+    for line in file: # check line in the file one by one
+        if line.startswith(">"): # find the ">" in the line
+            if current_header and current_sequence:  # check if these two things are full
+                full_sequence = "".join(current_sequence)
+                for pattern in tata_patterns: # check if the sequence meet the patterns
+                    if pattern in full_sequence:
+                        if line.startswith(">"): # find the ">" in the line
+                           newfile.write(f"Header: {current_header}")
+                           newfile.write(f"Found {pattern} in sequence\n")
+            
+            # get the gene name without its sequences
+            current_header = line.strip()
+            current_sequence = []
+        else:
+            current_sequence.append(line.strip())
+    
+    # deal with the last gene
+    if current_header and current_sequence:
+        full_sequence = "".join(current_sequence)
+        for pattern in tata_patterns:
+            if pattern in full_sequence:
+                newfile.write(f"Header: {current_header}")
+                newfile.write(f"Found {pattern} in sequence\n")
