@@ -5,7 +5,7 @@ file_path = r"C:\Users\F\Desktop\IBI1\IBI1_2024-25\Practical7\Saccharomyces_cere
 tata_patterns = ["GTAG", "GCAG", "ATAC"]
 a = input("chose GTAG or GCAG or ATAC: ")
 
-with open(file_path, "r") as file, open(f"{a}_spliced_genes.fa","w") as newfile: #open the file and read them
+with open(file_path, "r") as file, open(f"{a}_spliced_genes.fa","w") as newfile: #open the file and read it while creating a new file to record sequence
     current_header = ""
     current_sequence = []
     
