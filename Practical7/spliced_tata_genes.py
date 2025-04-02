@@ -1,34 +1,34 @@
-import re
-
 file_path = r"C:\Users\F\Desktop\IBI1\IBI1_2024-25\Practical7\Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"
-#give the pattern
-tata_patterns = ["GTAG", "GCAG", "ATAC"]
-a = input("chose GTAG or GCAG or ATAC: ")
-
-with open(file_path, "r") as file, open(f"{a}_spliced_genes.fa","w") as newfile: #open the file and read it while creating a new file to record sequence
+tata_patterns = ["GTAG", "GCAG", "ATAC"] #give the pattern
+a = input("Choose GTAG or GCAG or ATAC: ").strip().upper() 
+if a not in tata_patterns:
+    print("Invalid choice. Please enter GTAG, GCAG, or ATAC.")
+    exit()
+output_path = rf"C:\Users\F\Desktop\IBI1\IBI1_2024-25\Practical7\{a}_spliced_genes.fa"
+with open(file_path, "r") as file, open(output_path, "w") as newfile:
     current_header = ""
     current_sequence = []
     
     for line in file: # check line in the file one by one
         if line.startswith(">"): # find the ">" in the line
-            if current_header and current_sequence:  # check if these two things are full
+            if current_header and current_sequence: # check if these two things are full
                 full_sequence = "".join(current_sequence)
-                for pattern in tata_patterns: # check if the sequence meet the patterns
-                    if pattern in full_sequence:
-                        if line.startswith(">"): # find the ">" in the line
-                           newfile.write(f"Header: {current_header}")
-                           newfile.write(f"Found {pattern} in sequence\n")
+                if a in full_sequence:  # Only check the user-selected pattern
+                    count = full_sequence.count(a)
+                    newfile.write(f"{current_header[:8]}\n")
+                    newfile.write(f"Number of {a} : {count}\n")
+                    newfile.write(f"{full_sequence}\n\n")
             
-            # get the gene name without its sequences
             current_header = line.strip()
             current_sequence = []
         else:
             current_sequence.append(line.strip())
     
-    # deal with the last gene
+    # Handle the last gene
     if current_header and current_sequence:
         full_sequence = "".join(current_sequence)
-        for pattern in tata_patterns:
-            if pattern in full_sequence:
-                newfile.write(f"Header: {current_header}")
-                newfile.write(f"Found {pattern} in sequence\n")
+        if a in full_sequence:
+            count = full_sequence.count(a)
+            newfile.write(f"{current_header[:8]}\n")
+            newfile.write(f"Number of {a} : {count}\n")
+            newfile.write(f"{full_sequence}\n\n")

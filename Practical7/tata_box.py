@@ -11,23 +11,24 @@ with open(file_path, "r") as file, open(r"C:\Users\F\Desktop\IBI1\IBI1_2024-25\P
     for line in file: # check line in the file one by one
         if line.startswith(">"): # find the ">" in the line
             if current_header and current_sequence:  # check if these two things are full
-                full_sequence = "".join(current_sequence)
+                full_sequence = "".join(current_sequence) 
                 for pattern in tata_patterns: # check if the sequence meet the patterns
                     if pattern in full_sequence:
-                        if line.startswith(">"): # find the ">" in the line
-                           newfile.write(f"Header: {current_header}")
-                           newfile.write(f"Found {pattern} in sequence\n")
+                        newfile.write(f"{current_header[:8]}\n")
+                        newfile.write(f"{full_sequence}\n")
+                        break  #break if a pattern is found
             
             # get the gene name without its sequences
             current_header = line.strip()
             current_sequence = []
         else:
-            current_sequence.append(line.strip())
+            current_sequence.append(line.strip() + '\n')
     
     # deal with the last gene
     if current_header and current_sequence:
         full_sequence = "".join(current_sequence)
         for pattern in tata_patterns:
             if pattern in full_sequence:
-                newfile.write(f"Header: {current_header}")
-                newfile.write(f"Found {pattern} in sequence\n")
+                newfile.write(f"{current_header[:8]}\n")
+                newfile.write(f"{full_sequence}\n")
+                break  
