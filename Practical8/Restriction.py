@@ -1,17 +1,14 @@
 def Restriction_enzyme_cut_sites(sequence, restriction_enzyme):
-    list ={"A","T","G","C"} # set bases in DNA
-    index = 0
+    bases ={"A","T","G","C"} # set bases in DNA
     sites = []
     for i in range(len(sequence)): # check if there are any base not in list
-        if sequence[i] not in list:
+        if sequence[i] not in bases: 
             print("the sequence is wrong")
             return
-    while True:
-        index = sequence.find(restriction_enzyme,index) # find the location
-        if index == -1: # the situation that the all restriction_enzyme are found
-          break
-        sites.append(index)
-        index += 1 # continue the method
+    enzyme_length = len(restriction_enzyme) # calculate the total length of restriction_enzyme
+    for i in range(len(sequence) - enzyme_length + 1): #from 0 to the len(sequence) - enzyme_length + 1
+        if sequence[i:i + enzyme_length] == restriction_enzyme: # check if the part of sequence == restriction_enzyme
+            sites.append(i+1) # write the place
     print(sites)
     return sites
-Restriction_enzyme_cut_sites("ATCGTTCG","TC")
+Restriction_enzyme_cut_sites("ATCGTTCG","TCG")

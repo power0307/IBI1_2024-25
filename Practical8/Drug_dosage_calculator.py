@@ -9,7 +9,9 @@ def Drug_dosage_calculator(weight,strength): # def a function
     else: # report an error if the strength of paracetamol is wrong
         print(" your strength of paracetamol is wrong")
         return
-    dose = float(weight/s) # calculate the dose
+    dose = float(weight*15/s) # calculate the dose
     print(dose,"ml")
     return
-Drug_dosage_calculator(45,"120mg/5ml")
+Drug_dosage_calculator(45,"120mg/5ml") #result is 1.875 ml
+Drug_dosage_calculator(200,"120mg/5ml") # error
+Drug_dosage_calculator(45,"100mg/5ml")  #error
