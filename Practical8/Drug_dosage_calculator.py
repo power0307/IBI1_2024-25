@@ -4,7 +4,7 @@ def Drug_dosage_calculator(weight,strength): # def a function
         return
     if strength == "120mg/5ml": # replace the string with value
        s = 24
-    elif strength == "120mg/5ml":
+    elif strength == "250mg/5ml": # replace the string with value
        s = 50
     else: # report an error if the strength of paracetamol is wrong
         print(" your strength of paracetamol is wrong")
