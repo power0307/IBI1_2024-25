@@ -5,7 +5,7 @@ import numpy as np
 os.chdir(r"C:\Users\F\Desktop\IBI1\IBI1_2024-25\Practical10")
 dalys_data = pd.read_csv("dalys-rate-from-all-causes.csv")
 
-b = dalys_data.iloc[0:10,2] # the third column (the year) for the first 10 rows(the 10th year is 1999)
+b = dalys_data.iloc[0:10,2] # the third column (Year) for the first 10 rows(the 10th year is 1999)
 print(b) # print it
 
 a = dalys_data.loc[dalys_data.Year==1990, ["DALYs"]] # DALYs for all countries in 1990
