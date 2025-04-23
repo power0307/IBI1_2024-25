@@ -12,8 +12,16 @@ else:
 # result: bus is quicker
 
 # 4.2 Booleans
-X = True
-Y = False
-W = X and Y 
-print (W) 
+# make list for bool values of x and y
+x_values = [False, True]
+y_values = [False, True]
+
+# Traverse all possible combinations of X and Y
+for X in x_values:
+    for Y in y_values:
+        # Calculation logic and operation results
+        W = X and Y
+        # print outcomes
+        print(f"if X = {X} and Y = {Y}, then W = {W}")
+    
 # False
