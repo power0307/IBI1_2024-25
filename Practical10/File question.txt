@@ -1,0 +1,10 @@
+Queustion:
+How does the variance value for the UK compare to that of France? 
+What does this comparison imply about the variability of "DALYs" data between these two countries?
+
+Line:
+26,27,28,29,30,31
+
+Discussion:
+It would mean that the "DALYs" data in France shows more variability.
+This might be due to unique health challenges, social or economic factors in France that cause more inconsistent "DALYs" measurements.
