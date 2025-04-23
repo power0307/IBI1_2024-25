@@ -15,7 +15,12 @@ print(language_popularity)
 
 # draw the bar graph and give some information about the bar graph
 N = 5
-Percentage_of_Developers = (62.3, 52.9, 51, 51, 38.5)
+a = 62.3
+b = 52.9
+c = 51
+d = 51
+e = 38.5
+Percentage_of_Developers = (a,b,c,d,e)
 ind = np.arange(N)
 width = 0.35
 p1 = plt.bar(ind, Percentage_of_Developers, width)
