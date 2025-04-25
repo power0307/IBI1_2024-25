@@ -24,4 +24,9 @@ for X in x_values:
         # print outcomes
         print(f"if X = {X} and Y = {Y}, then W = {W}")
     
-# False
+# Table 
+# Value_1 |  Value_2 |  Output
+#  True   |   True   |   True
+#  True   |   False  |   False
+#  False  |   True   |   False
+#  False  |   False  |   False
